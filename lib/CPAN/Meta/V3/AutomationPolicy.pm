@@ -84,7 +84,7 @@ sub data($self) {
     #>>>
 }
 
-sub as_json($self) {
+sub to_json($self) {
     return $self->_json_encode( $self->data );
 }
 
