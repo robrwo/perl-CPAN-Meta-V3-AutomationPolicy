@@ -1,15 +1,15 @@
 use Test::File::ShareDir -share => {
     -dist => {
-        "CPAN-Meta-V3-AutomationPolicy" => "share"
+        "Dist-AutomationPolicy" => "share"
     }
 };
 
-use Test2::V0 -target => 'CPAN::Meta::V3::AutomationPolicy';
+use Test2::V0 -target => 'Dist::AutomationPolicy';
 use Test2::Tools::Compare;
 
 subtest "simple" => sub {
 
-    my $pol = CPAN::Meta::V3::AutomationPolicy->new(
+    my $pol = Dist::AutomationPolicy->new(
         distribution            => "Dist-AutomationPolicy",
         code_generation         => "toolchain",
         automated_contributions => "none",
@@ -26,7 +26,7 @@ subtest "simple" => sub {
       },
       "data";
 
-    ok my $copy = CPAN::Meta::V3::AutomationPolicy->from_json( $pol->to_json ), "from_json";
+    ok my $copy = Dist::AutomationPolicy->from_json( $pol->to_json ), "from_json";
 
     is $copy->data, $pol->data, "round trip";
 
@@ -34,7 +34,7 @@ subtest "simple" => sub {
 
 subtest "template" => sub {
 
-    my $pol = CPAN::Meta::V3::AutomationPolicy->new(
+    my $pol = Dist::AutomationPolicy->new(
         template => "human_supervised",
     );
 
@@ -47,7 +47,7 @@ subtest "template" => sub {
       },
       "data";
 
-    ok my $copy = CPAN::Meta::V3::AutomationPolicy->from_json( json => $pol->data ), "from_json";
+    ok my $copy = Dist::AutomationPolicy->from_json( json => $pol->data ), "from_json";
 
     is $copy->data, $pol->data, "round trip";
 
@@ -55,7 +55,7 @@ subtest "template" => sub {
 
 subtest "template with override" => sub {
 
-    my $pol = CPAN::Meta::V3::AutomationPolicy->new(
+    my $pol = Dist::AutomationPolicy->new(
         template => "no_automation",
         code_generation => "external_sources",
     );

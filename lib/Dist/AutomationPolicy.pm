@@ -1,4 +1,4 @@
-package CPAN::Meta::V3::AutomationPolicy;
+package Dist::AutomationPolicy;
 
 use v5.24;
 
@@ -12,11 +12,17 @@ use Path::Tiny qw( path );
 use PerlX::Maybe qw( maybe );
 use Ref::Util    qw( is_plain_hashref );
 use Syntax::Keyword::Match;
-use Types::Common qw( Enum InstanceOf PositiveInt NonEmptyStr );
+use Types::Common qw( Enum InstanceOf PositiveInt NonEmptyStr StrMatch );
 
 use experimental qw( declared_refs signatures );
 
 use namespace::autoclean;
+
+=attr version
+
+This is the automation policy version. It defaults to C<1>, and that is the only version of the specification supported.
+
+=cut
 
 has version => (
     is       => 'ro',
@@ -62,6 +68,12 @@ has description => (
     isa       => NonEmptyStr,
     predicate => 1,
 );
+
+=attr document
+
+This is the name of a text document explaining this policy.
+
+=cut
 
 has document => (
     is        => 'ro',
