@@ -5,8 +5,10 @@ use v5.24;
 use Moo;
 
 use Carp qw( croak );
+use File::ShareDir qw( dist_file );
 use JSON::MaybeXS;
 use JSON::Schema;
+use Path::Tiny qw( path );
 use PerlX::Maybe qw( maybe );
 use Ref::Util    qw( is_plain_hashref );
 use Syntax::Keyword::Match;
@@ -61,52 +63,9 @@ has filename => (
 
 my $json = JSON::MaybeXS->new( utf8 => 1, pretty => 1, canonical => 1 );
 
-my $schema = JSON::Schema->new(
-    $json->decode(
-        <<"SCHEMA"
-{
-  "\$schema": "https://json-schema.org/draft/2020-12/schema",
-  "\$id": "automation-policy.json",
-  "title": "Automation Policy",
-  "description": "Automation Policy",
-  "type": "object",
-  "properties": {
+my $file = path( dist_file( __PACKAGE__ =~ s/::/-/gr, "automation-policy-schema.json" ) );
 
-    "version": {
-      "description": "The version of the automation policy schema",
-      "type": "integer"
-    },
-
-    "description": {
-      "description": "An optional description of this policy",
-      "type": "string"
-    },
-
-    "document": {
-      "description": "The path of an AI_POLICY document",
-      "type": "string"
-    },
-
-    "code_generation": {
-      "description": "A level of how automated systems may change the code or documentation",
-      "enum": [ "toolchain", "external_sources", "machine_generated" ]
-    },
-
-    "automated_contributions": {
-      "description": "A level of how non-maintainers may submit automated contributions",
-      "enum": [ "none", "comment", "issue", "code_request" ]
-    },
-
-    "automated_actions": {
-      "description": "A level of how maintainers may use automated changes",
-      "enum": [ "none", "comment", "issue", "code_request", "code_change", "release" ]
-    }
-  },
-  "required": [ "version", "code_generation", "automated_contributions", "automated_actions" ]
-}
-SCHEMA
-    )
-);
+my $schema = JSON::Schema->new( $json->decode( $file->slurp_raw ) );
 
 sub data($self) {
     #<<<

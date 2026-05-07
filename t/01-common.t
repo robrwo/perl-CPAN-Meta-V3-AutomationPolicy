@@ -1,3 +1,8 @@
+use Test::File::ShareDir -share => {
+    -dist => {
+        "CPAN-Meta-V3-AutomationPolicy" => "share"
+    }
+};
 
 use Test2::V0 -target => 'CPAN::Meta::V3::AutomationPolicy';
 use Test2::Tools::Compare;
