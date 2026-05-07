@@ -25,6 +25,38 @@ has version => (
     required => 1,
 );
 
+=attr distribution
+
+This is an optional name for the distribution that this applies to.
+
+It accepts a distribution name with an optional version.
+
+=cut
+
+# Based on Types::Dist DistVersion but the version is optional
+
+# SPDX-SnippetBegin
+# SPDX-SnippetCopyrightText: 2019 by Renee Baecker
+# SPDX-License-Identifier: The Artistic License 2.0 (GPL Compatible)
+
+my $distname_re    = qr{ ([A-Za-z][A-Za-z0-9]*) ( - [A-Za-z0-9]+ )* }xmns;
+my $distversion_re = qr{ v? ( [0-9]+ ( \. [0-9]+ )* ) }xmns;
+my $distfq_re      = qr{$distname_re(-$distversion_re)?}n;
+
+# SPDX-SnippetEnd
+
+has distribution => (
+    is        => 'ro',
+    isa       => StrMatch[ qr{\A$distfq_re\z} ],
+    predicate => 1,
+);
+
+=attr description
+
+This is an optional description.
+
+=cut
+
 has description => (
     is        => 'ro',
     isa       => NonEmptyStr,
@@ -71,6 +103,7 @@ sub data($self) {
     #<<<
     return {
         version                 => $self->version,
+        maybe distribution      => $self->distribution,
         maybe description       => $self->has_description ? $self->description : undef,
         maybe document          => $self->has_document    ? $self->document    : undef,
         code_generation         => $self->code_generation,

@@ -11,6 +11,11 @@
             "type": "integer"
         },
 
+        "distribution": {
+            "description": "An optional name of the software distribution that this applies to",
+            "type": "string"
+        },
+
         "description": {
             "description": "An optional description of this policy",
             "type": "string"

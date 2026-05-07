@@ -10,6 +10,7 @@ use Test2::Tools::Compare;
 subtest "simple" => sub {
 
     my $pol = CPAN::Meta::V3::AutomationPolicy->new(
+        distribution            => "Dist-AutomationPolicy",
         code_generation         => "toolchain",
         automated_contributions => "none",
         automated_actions       => "comment",
@@ -18,6 +19,7 @@ subtest "simple" => sub {
     is $pol->data,
       {
         version                 => 1,
+        distribution            => "Dist-AutomationPolicy",
         code_generation         => "toolchain",
         automated_contributions => "none",
         automated_actions       => "comment",
