@@ -19,6 +19,10 @@ subtest "simple" => sub {
       },
       "data";
 
+    ok my $copy = CPAN::Meta::V3::AutomationPolicy->from_json( $pol->to_json ), "from_json";
+
+    is $copy->data, $pol->data, "round trip";
+
 };
 
 subtest "template" => sub {
@@ -35,6 +39,10 @@ subtest "template" => sub {
         automated_actions       => "code_request",
       },
       "data";
+
+    ok my $copy = CPAN::Meta::V3::AutomationPolicy->from_json( json => $pol->data ), "from_json";
+
+    is $copy->data, $pol->data, "round trip";
 
 };
 
