@@ -7,7 +7,7 @@ use Moo;
 use Carp qw( croak );
 use File::ShareDir qw( dist_file );
 use JSON::MaybeXS;
-use JSON::Schema;
+use JSON::Schema::Validate;
 use Path::Tiny qw( path );
 use PerlX::Maybe qw( maybe );
 use Ref::Util    qw( is_plain_hashref );
@@ -307,7 +307,7 @@ my $json = JSON::MaybeXS->new( utf8 => 1, pretty => 1, canonical => 1 );
 
 my $file = path( dist_file( __PACKAGE__ =~ s/::/-/gr, "automation-policy-schema.json" ) );
 
-my $schema = JSON::Schema->new( $json->decode( $file->slurp_raw ) );
+my $schema = JSON::Schema::Validate->new( $json->decode( $file->slurp_raw ), compile => 1, );
 
 =method data
 
@@ -343,7 +343,7 @@ If no C<\%data> is passed to it, then it validates the L</data>.
 
 sub validate( $self, $data = undef ) {
     $data //= $self->data;
-    return $schema->validate( $data );
+    return $schema->is_valid( $data );
 }
 
 =method to_json

@@ -1,6 +1,9 @@
 Revision history for {{ $dist->name }}:
 
 {{$NEXT}}
+  [Enhancements]
+  - Switched to use JSON::Schema::Validate, which only requires core prereqs.
+
   [Tests]
   - Remove unnecessary test prerequisites (due to copy/paste).
 

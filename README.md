@@ -43,9 +43,12 @@ This is separate but complimentary to including an `AI_POLICY.md` or `CONTRIBUTI
 
 # RECENT CHANGES
 
-Changes for version v0.1.0 (2026-05-11)
+Changes for version v0.1.1 (2026-05-11)
 
-- Initial prototype released to CPAN.  - Initial prototype released to CPAN.
+- Enhancements
+    - Switched to use JSON::Schema::Validate, which only requires core prereqs.
+- Tests
+    - Remove unnecessary test prerequisites (due to copy/paste).
 
 See the `Changes` file for more details.
 
@@ -56,7 +59,7 @@ This module lists the following modules as runtime dependencies:
 - [Carp](https://metacpan.org/pod/Carp)
 - [File::ShareDir](https://metacpan.org/pod/File%3A%3AShareDir)
 - [JSON::MaybeXS](https://metacpan.org/pod/JSON%3A%3AMaybeXS)
-- [JSON::Schema](https://metacpan.org/pod/JSON%3A%3ASchema)
+- [JSON::Schema::Validate](https://metacpan.org/pod/JSON%3A%3ASchema%3A%3AValidate)
 - [Moo](https://metacpan.org/pod/Moo)
 - [Path::Tiny](https://metacpan.org/pod/Path%3A%3ATiny)
 - [PerlX::Maybe](https://metacpan.org/pod/PerlX%3A%3AMaybe)
