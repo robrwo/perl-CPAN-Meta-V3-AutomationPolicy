@@ -20,6 +20,32 @@ use namespace::autoclean;
 
 our $VERSION = 'v0.1.0';
 
+=head1 SYNOPSIS
+
+To create an automation policy file:
+
+    use Dist::AutomationPolicy;
+    use Path::Tiny qw( path );
+
+    my $pol = Dist::AutomationPolicy->new(
+        distribution            => "Dist-AutomationPolicy-v0.1.0",
+        code_generation         => "toolchain",
+        automated_contributions => "issue",
+        automated_actions       => "code_request",
+    );
+
+    if ( $pol->validate ) {
+        my $path = path( ".", $pol->filename ); # "CPAN-META/automation-policy.json"
+        $path->parent->mkdir;
+        $path->spew_raw( $pol->to_json );
+    }
+
+To read an automation policy file:
+
+    my $path = path( "CPAN-META/automation-policy.json" );
+
+    my $pol  = Dist::AutomationPolicy->from_json( json => $path->slurp_raw );
+
 =head1 DESCRIPION
 
 This module allows package maintainers to specify machine-readable metadata about their policies regarding automation:
