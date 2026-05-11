@@ -22,6 +22,12 @@ our $VERSION = 'v0.1.0';
 
 # ABSTRACT: generate and parse distribution automation policies
 
+=begin :prelude
+
+=for stopwords LLMs
+
+=end :prelude
+
 =head1 SYNOPSIS
 
 To create an automation policy file:
@@ -48,7 +54,7 @@ To read an automation policy file:
 
     my $pol  = Dist::AutomationPolicy->from_json( json => $path->slurp_raw );
 
-=head1 DESCRIPION
+=head1 DESCRIPTION
 
 This module allows package maintainers to specify machine-readable metadata about their policies regarding automation:
 how code is generated,
@@ -116,7 +122,7 @@ has description => (
 
 This is the name of a text document explaining this policy, e.g. F<AI_POLICY.md>.
 
-The path is reulative to the distribution root.
+The path is relative to the distribution root.
 
 =cut
 
@@ -138,7 +144,7 @@ It accepts the following values:
 
 This means that any code changes are made by the standard tools only,
 e.g. generation of F<META.json>, F<README>, updates to the POD or
-incrementing the verion as part of the build and release process.
+incrementing the version as part of the build and release process.
 
 It implicitly includes dynamic code made by frameworks such as
 L<Moose>, L<DBIx::Class> or by curried methods.
@@ -151,7 +157,7 @@ No generative AI is used in this process.
 
 Code is generated or updated from external sources, e.g. the Olson timezone database, or data from schema.org.
 
-This includes simply copying data files to be used via something like L<Fire::ShareDir> by an otherwise unchanged module.
+This includes simply copying data files to be used via something like L<File::ShareDir> by an otherwise unchanged module.
 
 This includes templates from external sources.
 
@@ -355,7 +361,7 @@ sub BUILDARGS( $class, @args ) {
 
 =attr template
 
-This is a constructor-only attribute that is used to specify sommon use-case templates.
+This is a constructor-only attribute that is used to specify common use-case templates.
 
 =over
 

@@ -32,6 +32,15 @@ my $path = path( "CPAN-META/automation-policy.json" );
 my $pol  = Dist::AutomationPolicy->from_json( json => $path->slurp_raw );
 ```
 
+# DESCRIPTION
+
+This module allows package maintainers to specify machine-readable metadata about their policies regarding automation:
+how code is generated,
+whether automated contributions are allowed,
+and whether there are automated actions run by the maintainers.
+
+This is separate but complimentary to including an `AI_POLICY.md` or `CONTRIBUTING.md` file in the distribution.
+
 # REQUIREMENTS
 
 This module lists the following modules as runtime dependencies:
