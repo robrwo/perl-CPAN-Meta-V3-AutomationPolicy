@@ -41,6 +41,14 @@ and whether there are automated actions run by the maintainers.
 
 This is separate but complimentary to including an `AI_POLICY.md` or `CONTRIBUTING.md` file in the distribution.
 
+# RECENT CHANGES
+
+Changes for version v0.1.0 (2026-05-11)
+
+- Initial prototype released to CPAN.  - Initial prototype released to CPAN.
+
+See the `Changes` file for more details.
+
 # REQUIREMENTS
 
 This module lists the following modules as runtime dependencies:
