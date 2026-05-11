@@ -1,0 +1,4 @@
+Dist-AutomationPolicy-*.tar.gz
+Dist-AutomationPolicy-*/
+.build/
+local/
