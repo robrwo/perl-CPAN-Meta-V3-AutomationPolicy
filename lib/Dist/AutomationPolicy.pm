@@ -18,7 +18,7 @@ use experimental qw( signatures );
 
 use namespace::autoclean;
 
-our $VERSION = 'v0.1.0';
+our $VERSION = 'v0.1.1';
 
 # ABSTRACT: generate and parse distribution automation policies
 
