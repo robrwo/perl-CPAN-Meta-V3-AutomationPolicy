@@ -141,6 +141,10 @@ Timothy Legge
 Todd Rinaldo,
 and others for suggestions and feedback.
 
+# CONTRIBUTOR
+
+Leon Timmermans <fawaka@gmail.com>
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2026 by Robert Rothenberg.

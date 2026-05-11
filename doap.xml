@@ -23,6 +23,12 @@
       <foaf:mbox rdf:resource="mailto:perl@rhizomnic.com" />
     </foaf:Person>
   </developer>
+  <helper>
+    <foaf:Person>
+      <foaf:name>Leon Timmermans</foaf:name>
+      <foaf:mbox rdf:resource="mailto:fawaka@gmail.com" />
+    </foaf:Person>
+  </helper>
   <license rdf:resource="http://www.perlfoundation.org/artistic_license_2_0" />
   <bug-database rdf:resource="https://github.com/robrwo/perl-Dist-AutomationPolicy/issues" />
   <repository>
