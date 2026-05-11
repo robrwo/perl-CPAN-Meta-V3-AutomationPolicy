@@ -24,7 +24,7 @@ our $VERSION = 'v0.1.0';
 
 =begin :prelude
 
-=for stopwords LLMs
+=for stopwords LLMs Duponchelle Legge Nilsen Rinaldo Rochelemagne Thibault Timmermans
 
 =end :prelude
 
