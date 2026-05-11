@@ -86,6 +86,10 @@ This is an optional name for the distribution that this applies to.
 
 It accepts a distribution name with an optional version.
 
+=attr has_distribution
+
+The predicate for L</distribution>.
+
 =cut
 
 # Based on Types::Dist DistVersion but the version is optional
@@ -110,6 +114,10 @@ has distribution => (
 
 This is an optional description.
 
+=attr has_description
+
+The predicate for L</description>.
+
 =cut
 
 has description => (
@@ -123,6 +131,10 @@ has description => (
 This is the name of a text document explaining this policy, e.g. F<AI_POLICY.md>.
 
 The path is relative to the distribution root.
+
+=attr has_document
+
+The predicate for L</document>.
 
 =cut
 
@@ -345,6 +357,10 @@ This returns the JSON form of the L</data>.
 sub to_json($self) {
     return $json->encode( $self->data );
 }
+
+=for Pod::Coverage BUILDARGS
+
+=cut
 
 sub BUILDARGS( $class, @args ) {
 
