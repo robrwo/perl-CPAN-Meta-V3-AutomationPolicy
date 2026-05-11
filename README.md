@@ -96,12 +96,22 @@ For more information, see [How to install CPAN modules](https://www.cpan.org/mod
 
 # SUPPORT
 
+Only the latest version of this module will be supported.
+
+This module requires Perl v5.24 or later.
+Future releases may only support Perl versions released in the last ten (10) years.
+
+## Reporting Bugs and Submitting Feature Requests
+
 Please report any bugs or feature requests on the bugtracker website
 [https://github.com/robrwo/perl-Dist-AutomationPolicy/issues](https://github.com/robrwo/perl-Dist-AutomationPolicy/issues)
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
 feature.
+
+If the bug you are reporting has security implications which make it inappropriate to send to a public issue tracker,
+then see `SECURITY.md` for instructions how to report security vulnerabilities.
 
 # SOURCE
 
@@ -111,6 +121,17 @@ and may be cloned from [https://github.com/robrwo/perl-Dist-AutomationPolicy.git
 # AUTHOR
 
 Robert Rothenberg <perl@rhizomnic.com>
+
+The ideas for this policy emerged from discussions at the 2026 Perl Toolchain Summit.
+
+Thanks to
+Leon Timmermans,
+Nicolas Rochelemagne,
+Salve J. Nilsen,
+Thibault Duponchelle,
+Timothy Legge
+Todd Rinaldo,
+and others for suggestions and feedback.
 
 # COPYRIGHT AND LICENSE
 

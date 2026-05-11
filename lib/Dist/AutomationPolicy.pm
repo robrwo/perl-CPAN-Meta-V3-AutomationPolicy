@@ -509,4 +509,31 @@ sub from_json( $class, @args ) {
 
 L<https://github.com/CPAN-Security/cpan-metadata-v3/blob/main/automation-policy.md>
 
+=head1 append:AUTHOR
+
+The ideas for this policy emerged from discussions at the 2026 Perl Toolchain Summit.
+
+Thanks to
+Leon Timmermans,
+Nicolas Rochelemagne,
+Salve J. Nilsen,
+Thibault Duponchelle,
+Timothy Legge
+Todd Rinaldo,
+and others for suggestions and feedback.
+
+=head1 prepend:SUPPORT
+
+Only the latest version of this module will be supported.
+
+This module requires Perl v5.24 or later.
+Future releases may only support Perl versions released in the last ten (10) years.
+
+=head2 Reporting Bugs and Submitting Feature Requests
+
+=head1 append:SUPPORT
+
+If the bug you are reporting has security implications which make it inappropriate to send to a public issue tracker,
+then see F<SECURITY.md> for instructions how to report security vulnerabilities.
+
 =cut
