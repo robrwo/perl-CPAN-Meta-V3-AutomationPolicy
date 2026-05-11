@@ -14,7 +14,7 @@ use Ref::Util    qw( is_plain_hashref );
 use Syntax::Keyword::Match;
 use Types::Common qw( Enum InstanceOf PositiveInt NonEmptyStr StrMatch );
 
-use experimental qw( declared_refs signatures );
+use experimental qw( signatures );
 
 use namespace::autoclean;
 
@@ -476,12 +476,10 @@ sub from_json( $class, @args ) {
 
     croak "json is required" unless defined $args{json};
 
-    my \$data = \$args{json};
+    $args{json} = $json->decode( $args{json} ) unless is_plain_hashref( $args{json} );
 
-    $data = $json->decode( $data ) unless is_plain_hashref( $data );
-
-    if ( my $res = $schema->validate( $data ) ) {
-        return $class->new( $data );
+    if ( my $res = $schema->validate( $args{json} ) ) {
+        return $class->new( $args{json} );
     }
     else {
         croak $_ for $res->errors;
