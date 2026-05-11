@@ -1,4 +1,6 @@
 Revision history for {{ $dist->name }}:
 
 {{$NEXT}}
-  - Initial prototype released to CPAN.
+
+v0.1.0    2026-05-11 22:09:42+01:00 Europe/London
+  - Initial prototype released to CPAN.  - Initial prototype released to CPAN.
