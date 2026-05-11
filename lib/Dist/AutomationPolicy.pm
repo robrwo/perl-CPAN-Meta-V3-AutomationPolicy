@@ -20,6 +20,8 @@ use namespace::autoclean;
 
 our $VERSION = 'v0.1.0';
 
+# ABSTRACT: generate and parse distribution automation policies
+
 =head1 SYNOPSIS
 
 To create an automation policy file:
