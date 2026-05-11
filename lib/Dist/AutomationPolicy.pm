@@ -362,7 +362,7 @@ sub to_json($self) {
 
 =cut
 
-sub BUILDARGS( $class, @args ) {
+sub BUILDARGS( $, @args ) {
 
     if ( @args == 1 && !is_plain_hashref( $args[0] ) ) {
         unshift @args, "template";
