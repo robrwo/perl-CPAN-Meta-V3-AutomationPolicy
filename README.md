@@ -1,0 +1,118 @@
+# NAME
+
+Dist::AutomationPolicy - generate and parse distribution automation policies
+
+# SYNOPSIS
+
+To create an automation policy file:
+
+```perl
+use Dist::AutomationPolicy;
+use Path::Tiny qw( path );
+
+my $pol = Dist::AutomationPolicy->new(
+    distribution            => "Dist-AutomationPolicy-v0.1.0",
+    code_generation         => "toolchain",
+    automated_contributions => "issue",
+    automated_actions       => "code_request",
+);
+
+if ( $pol->validate ) {
+    my $path = path( ".", $pol->filename ); # "CPAN-META/automation-policy.json"
+    $path->parent->mkdir;
+    $path->spew_raw( $pol->to_json );
+}
+```
+
+To read an automation policy file:
+
+```perl
+my $path = path( "CPAN-META/automation-policy.json" );
+
+my $pol  = Dist::AutomationPolicy->from_json( json => $path->slurp_raw );
+```
+
+# REQUIREMENTS
+
+This module lists the following modules as runtime dependencies:
+
+- [Carp](https://metacpan.org/pod/Carp)
+- [File::ShareDir](https://metacpan.org/pod/File%3A%3AShareDir)
+- [JSON::MaybeXS](https://metacpan.org/pod/JSON%3A%3AMaybeXS)
+- [JSON::Schema](https://metacpan.org/pod/JSON%3A%3ASchema)
+- [Moo](https://metacpan.org/pod/Moo)
+- [Path::Tiny](https://metacpan.org/pod/Path%3A%3ATiny)
+- [PerlX::Maybe](https://metacpan.org/pod/PerlX%3A%3AMaybe)
+- [Ref::Util](https://metacpan.org/pod/Ref%3A%3AUtil)
+- [Syntax::Keyword::Match](https://metacpan.org/pod/Syntax%3A%3AKeyword%3A%3AMatch)
+- [Types::Common](https://metacpan.org/pod/Types%3A%3ACommon)
+- [experimental](https://metacpan.org/pod/experimental)
+- [namespace::autoclean](https://metacpan.org/pod/namespace%3A%3Aautoclean)
+- [perl](https://metacpan.org/pod/perl) version v5.24.0 or later
+
+See the `cpanfile` file for the full list of prerequisites.
+
+# INSTALLATION
+
+The latest version of this module (along with any dependencies) can be installed from [CPAN](https://www.cpan.org) with the `cpan` tool that is included with Perl:
+
+```
+cpan Dist::AutomationPolicy
+```
+
+You can also extract the distribution archive and install this module (along with any dependencies):
+
+```
+cpan .
+```
+
+You can also install this module manually using the following commands:
+
+```
+perl Makefile.PL
+make
+make test
+make install
+```
+
+If you are working with the source repository, then it may not have a `Makefile.PL` file.  But you can use the [Dist::Zilla](https://dzil.org/) tool in anger to build and install this module:
+
+```
+dzil build
+dzil test
+dzil install --install-command="cpan ."
+```
+
+For more information, see [How to install CPAN modules](https://www.cpan.org/modules/INSTALL.html).
+
+# SUPPORT
+
+Please report any bugs or feature requests on the bugtracker website
+[https://github.com/robrwo/perl-Dist-AutomationPolicy/issues](https://github.com/robrwo/perl-Dist-AutomationPolicy/issues)
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+# SOURCE
+
+The development version is on github at [https://github.com/robrwo/perl-Dist-AutomationPolicy](https://github.com/robrwo/perl-Dist-AutomationPolicy)
+and may be cloned from [https://github.com/robrwo/perl-Dist-AutomationPolicy.git](https://github.com/robrwo/perl-Dist-AutomationPolicy.git)
+
+# AUTHOR
+
+Robert Rothenberg <perl@rhizomnic.com>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2026 by Robert Rothenberg.
+
+This is free software, licensed under:
+
+```
+The Artistic License 2.0 (GPL Compatible)
+```
+
+# SEE ALSO
+
+[https://github.com/CPAN-Security/cpan-metadata-v3/blob/main/automation-policy.md](https://github.com/CPAN-Security/cpan-metadata-v3/blob/main/automation-policy.md)
