@@ -323,7 +323,7 @@ If no C<\%data> is passed to it, then it validates the L</data>.
 
 sub validate( $self, $data = undef ) {
     $data //= $self->data;
-    return $self->_validate( $data );
+    return $schema->validate( $data );
 }
 
 =method to_json
