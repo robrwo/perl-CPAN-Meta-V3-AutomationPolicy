@@ -43,16 +43,10 @@ This is separate but complimentary to including an `AI_POLICY.md` or `CONTRIBUTI
 
 # RECENT CHANGES
 
-Changes for version v0.1.1 (2026-05-12)
+Changes for version v0.1.2 (2026-05-12)
 
-- Enhancements
-    - Switched to use JSON::Schema::Validate, which only requires core prereqs.
-    - Removed Ref::Util and Syntax::Keyword::SmartMatch prerequisites.
 - Bug Fixes
-    - Fixed subtle reference handling issue in the constructors.
-- Tests
-    - Remove unnecessary test prerequisites (due to copy/paste).
-    - Specified the minim Path::Tiny version for the SYNOPSIS tests.
+    - Specified the minimum version for JSON::Schema::Validate.
 
 See the `Changes` file for more details.
 
@@ -63,7 +57,7 @@ This module lists the following modules as runtime dependencies:
 - [Carp](https://metacpan.org/pod/Carp)
 - [File::ShareDir](https://metacpan.org/pod/File%3A%3AShareDir)
 - [JSON::MaybeXS](https://metacpan.org/pod/JSON%3A%3AMaybeXS)
-- [JSON::Schema::Validate](https://metacpan.org/pod/JSON%3A%3ASchema%3A%3AValidate)
+- [JSON::Schema::Validate](https://metacpan.org/pod/JSON%3A%3ASchema%3A%3AValidate) version v0.7.0 or later
 - [Moo](https://metacpan.org/pod/Moo)
 - [Path::Tiny](https://metacpan.org/pod/Path%3A%3ATiny) version 0.130 or later
 - [PerlX::Maybe](https://metacpan.org/pod/PerlX%3A%3AMaybe)

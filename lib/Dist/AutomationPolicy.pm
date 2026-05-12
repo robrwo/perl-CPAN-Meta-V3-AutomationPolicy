@@ -7,7 +7,7 @@ use Moo;
 use Carp qw( croak );
 use File::ShareDir qw( dist_file );
 use JSON::MaybeXS;
-use JSON::Schema::Validate;
+use JSON::Schema::Validate v0.7.0;
 use Path::Tiny qw( path );
 use PerlX::Maybe qw( maybe );
 use Types::Common qw( Enum InstanceOf PositiveInt NonEmptyStr StrMatch );
