@@ -8,7 +8,7 @@ use Test2::V0 -target => 'Dist::AutomationPolicy';
 use Test2::Tools::Compare;
 
 use Dist::AutomationPolicy;
-use Path::Tiny qw( path tempdir );
+use Path::Tiny 0.130 qw( path tempdir );
 
 my $dir = tempdir;
 

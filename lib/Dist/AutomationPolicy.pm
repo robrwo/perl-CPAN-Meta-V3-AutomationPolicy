@@ -33,7 +33,7 @@ our $VERSION = 'v0.1.1';
 To create an automation policy file:
 
     use Dist::AutomationPolicy;
-    use Path::Tiny qw( path );
+    use Path::Tiny qw( path ) 0.130;
 
     my $pol = Dist::AutomationPolicy->new(
         distribution            => "Dist-AutomationPolicy-v0.1.0",

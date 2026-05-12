@@ -8,7 +8,7 @@ To create an automation policy file:
 
 ```perl
 use Dist::AutomationPolicy;
-use Path::Tiny qw( path );
+use Path::Tiny qw( path ) 0.130;
 
 my $pol = Dist::AutomationPolicy->new(
     distribution            => "Dist-AutomationPolicy-v0.1.0",
@@ -43,12 +43,13 @@ This is separate but complimentary to including an `AI_POLICY.md` or `CONTRIBUTI
 
 # RECENT CHANGES
 
-Changes for version v0.1.1 (2026-05-11)
+Changes for version v0.1.1 (2026-05-12)
 
 - Enhancements
     - Switched to use JSON::Schema::Validate, which only requires core prereqs.
 - Tests
     - Remove unnecessary test prerequisites (due to copy/paste).
+    - Specified the minim Path::Tiny version for the SYNOPSIS tests.
 
 See the `Changes` file for more details.
 
@@ -61,7 +62,7 @@ This module lists the following modules as runtime dependencies:
 - [JSON::MaybeXS](https://metacpan.org/pod/JSON%3A%3AMaybeXS)
 - [JSON::Schema::Validate](https://metacpan.org/pod/JSON%3A%3ASchema%3A%3AValidate)
 - [Moo](https://metacpan.org/pod/Moo)
-- [Path::Tiny](https://metacpan.org/pod/Path%3A%3ATiny)
+- [Path::Tiny](https://metacpan.org/pod/Path%3A%3ATiny) version 0.130 or later
 - [PerlX::Maybe](https://metacpan.org/pod/PerlX%3A%3AMaybe)
 - [Ref::Util](https://metacpan.org/pod/Ref%3A%3AUtil)
 - [Syntax::Keyword::Match](https://metacpan.org/pod/Syntax%3A%3AKeyword%3A%3AMatch)
