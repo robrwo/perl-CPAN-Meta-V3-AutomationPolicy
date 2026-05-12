@@ -47,6 +47,9 @@ Changes for version v0.1.1 (2026-05-12)
 
 - Enhancements
     - Switched to use JSON::Schema::Validate, which only requires core prereqs.
+    - Removed Ref::Util prerequisite.
+- Bug Fixes
+    - Fixed subtle reference handling issue in the constructors.
 - Tests
     - Remove unnecessary test prerequisites (due to copy/paste).
     - Specified the minim Path::Tiny version for the SYNOPSIS tests.
@@ -64,7 +67,6 @@ This module lists the following modules as runtime dependencies:
 - [Moo](https://metacpan.org/pod/Moo)
 - [Path::Tiny](https://metacpan.org/pod/Path%3A%3ATiny) version 0.130 or later
 - [PerlX::Maybe](https://metacpan.org/pod/PerlX%3A%3AMaybe)
-- [Ref::Util](https://metacpan.org/pod/Ref%3A%3AUtil)
 - [Syntax::Keyword::Match](https://metacpan.org/pod/Syntax%3A%3AKeyword%3A%3AMatch)
 - [Types::Common](https://metacpan.org/pod/Types%3A%3ACommon)
 - [experimental](https://metacpan.org/pod/experimental)

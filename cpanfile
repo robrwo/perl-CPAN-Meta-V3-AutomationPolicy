@@ -8,7 +8,6 @@ requires "JSON::Schema::Validate" => "0";
 requires "Moo" => "0";
 requires "Path::Tiny" => "0.130";
 requires "PerlX::Maybe" => "0";
-requires "Ref::Util" => "0";
 requires "Syntax::Keyword::Match" => "0";
 requires "Types::Common" => "0";
 requires "experimental" => "0";

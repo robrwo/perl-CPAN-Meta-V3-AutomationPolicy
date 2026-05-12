@@ -10,7 +10,6 @@ use JSON::MaybeXS;
 use JSON::Schema::Validate;
 use Path::Tiny qw( path );
 use PerlX::Maybe qw( maybe );
-use Ref::Util    qw( is_plain_hashref );
 use Syntax::Keyword::Match;
 use Types::Common qw( Enum InstanceOf PositiveInt NonEmptyStr StrMatch );
 
@@ -364,11 +363,11 @@ sub to_json($self) {
 
 sub BUILDARGS( $, @args ) {
 
-    if ( @args == 1 && !is_plain_hashref( $args[0] ) ) {
+    if ( @args == 1 && !ref( $args[0] ) ) {
         unshift @args, "template";
     }
 
-    my %args = ( @args == 1 && is_plain_hashref( $args[0] ) ) ? $args[0]->%* : @args;
+    my %args = ( @args == 1 && ref( $args[0] ) eq "HASH" ) ? $args[0]->%* : @args;
 
     if ( my $version = $args{version} ) {
         croak "unsupported version '${version}'"
@@ -484,15 +483,15 @@ This is an alternative constructor that accepts a JSON string or hash reference 
 sub from_json( $class, @args ) {
 
 
-    if ( @args == 1 && !is_plain_hashref( $args[0] ) ) {
+    if ( @args == 1 && !ref( $args[0] ) ) {
         unshift @args, "json";
     }
 
-    my %args = ( @args == 1 && is_plain_hashref( $args[0] ) ) ? $args[0]->%* : @args;
+    my %args = ( @args == 1 && ref( $args[0] ) eq "HASH" ) ? $args[0]->%* : @args;
 
     croak "json is required" unless defined $args{json};
 
-    $args{json} = $json->decode( $args{json} ) unless is_plain_hashref( $args{json} );
+    $args{json} = $json->decode( $args{json} ) unless ref( $args{json} );
 
     if ( my $res = $schema->validate( $args{json} ) ) {
         return $class->new( $args{json} );
