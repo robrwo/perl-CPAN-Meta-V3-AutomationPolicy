@@ -47,6 +47,8 @@ Changes for version v0.1.2 (2026-05-12)
 
 - Bug Fixes
     - Specified the minimum version for JSON::Schema::Validate.
+- Documentation
+    - Fixed typo in Changes.
 
 See the `Changes` file for more details.
 
