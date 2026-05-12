@@ -4,7 +4,7 @@ Revision history for {{ $dist->name }}:
   [Enhancements]
   - Switched to use JSON::Schema::Validate, which only requires core prereqs.
 
-  - Removed Ref::Util prerequisite.
+  - Removed Ref::Util and Syntax::Keyword::SmartMatch prerequisites.
 
   [Bug Fixes]
   - Fixed subtle reference handling issue in the constructors.

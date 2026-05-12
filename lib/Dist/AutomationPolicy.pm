@@ -10,10 +10,9 @@ use JSON::MaybeXS;
 use JSON::Schema::Validate;
 use Path::Tiny qw( path );
 use PerlX::Maybe qw( maybe );
-use Syntax::Keyword::Match;
 use Types::Common qw( Enum InstanceOf PositiveInt NonEmptyStr StrMatch );
 
-use experimental qw( signatures );
+use experimental qw( postderef signatures );
 
 use namespace::autoclean;
 
@@ -425,43 +424,51 @@ This is discouraged.
 
     if ( my $template = delete $args{template} ) {
 
-        match( $template : eq ) {
+        my %templates = (
 
-            case ("no_automation") {
-                $args{code_generation}         //= "toolchain";
-                $args{automated_contributions} //= "none";
-                $args{automated_actions}       //= "comment";
-            }
+            no_automation => {
+                code_generation         => "toolchain",
+                automated_contributions => "none",
+                automated_actions       => "comment",
+              },
 
-            case ("issues_only") {
-                $args{code_generation}         //= "toolchain";
-                $args{automated_contributions} //= "issue";
-                $args{automated_actions}       //= "issue";
-            }
+              issues_only => {
+                code_generation         => "toolchain",
+                automated_contributions => "issue",
+                automated_actions       => "issue",
+              },
 
-            case ("human_supervised") {
-                $args{code_generation}         //= "machine_generated";
-                $args{automated_contributions} //= "code_request";
-                $args{automated_actions}       //= "code_request";
-            }
+              human_supervised => {
+                code_generation         => "machine_generated",
+                automated_contributions => "code_request",
+                automated_actions       => "code_request",
+              },
 
-            case ("data_driven_updates") {
-                $args{code_generation}         //= "external_sources";
-                $args{automated_contributions} //= "issue";
-                $args{automated_actions}       //= "release";
-            }
+              data_driven_updates => {
+                code_generation         => "external_sources",
+                automated_contributions => "issue",
+                automated_actions       => "release",
+              },
 
-            case ("full_automation") {
-                $args{code_generation}         //= "code_generation";
-                $args{automated_contributions} //= "code_request";
-                $args{automated_actions}       //= "release";
-            }
+              full_automation => {
+                code_generation         => "code_generation",
+                automated_contributions => "code_request",
+                automated_actions       => "release",
+              },
 
-            default {
-                croak "Unsupported template: '${template}'";
+        );
+
+        if ( my $match = $templates{$template} ) {
+
+            for my $attr ( keys $match->%* ) {
+                $args{$attr} //= $match->{$attr};
             }
 
         }
+        else {
+            croak "Unsupported template: '${template}'";
+        }
+
 
     }
 
