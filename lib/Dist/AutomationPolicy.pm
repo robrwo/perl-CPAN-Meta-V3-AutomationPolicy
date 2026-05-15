@@ -292,9 +292,9 @@ has automated_actions => (
 
 =attr models
 
-This is an optional aaray reference of Model IDs used for L</automated_actions>, and where known L</automated_contributions>.
+This is an optional array reference of Model IDs used for L</automated_actions>, and (when known) L</automated_contributions>.
 
-Model IDs should know from L<https://docs.aimlapi.com/api-references/model-database>
+Model IDs should come from L<https://docs.aimlapi.com/api-references/model-database>.
 
 =cut
 
