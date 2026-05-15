@@ -4,6 +4,9 @@ Revision history for {{ $dist->name }}:
   [Enhancements]
   - Added the models attribute for documenting the models used.
 
+  [Documentation]
+  - Updated documentation.
+
 v0.1.2    2026-05-12 17:11:12+01:00 Europe/London
   [Bug Fixes]
   - Specified the minimum version for JSON::Schema::Validate.

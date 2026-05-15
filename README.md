@@ -48,6 +48,8 @@ Changes for version v0.2.0 (2026-05-15)
 
 - Enhancements
     - Added the models attribute for documenting the models used.
+- Documentation
+    - Updated documentation.
 
 See the `Changes` file for more details.
 
