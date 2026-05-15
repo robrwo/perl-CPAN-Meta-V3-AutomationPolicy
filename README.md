@@ -44,7 +44,7 @@ This is separate but complimentary to including an `AI_POLICY.md` or `CONTRIBUTI
 
 # RECENT CHANGES
 
-Changes for version v0.1.3 (2026-05-15)
+Changes for version v0.2.0 (2026-05-15)
 
 - Enhancements
     - Added the models attribute for documenting the models used.
