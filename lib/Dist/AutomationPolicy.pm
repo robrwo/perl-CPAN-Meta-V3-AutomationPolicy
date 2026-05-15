@@ -22,7 +22,7 @@ our $VERSION = 'v0.2.0';
 
 =begin :prelude
 
-=for stopwords LLMs Duponchelle Legge Nilsen Rinaldo Rochelemagne Thibault Timmermans
+=for stopwords LLMs Duponchelle Legge Nilsen Rinaldo Rochelemagne Thibault Timmermans TypeScript minifiers preprocessors
 
 =end :prelude
 
