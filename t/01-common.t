@@ -71,5 +71,27 @@ subtest "template with override" => sub {
 
 };
 
+subtest "template with model (coerced)" => sub {
+
+    my $pol = Dist::AutomationPolicy->new(
+        template => "human_supervised",
+        models   => "5pt-5.1-codex",
+    );
+
+    is $pol->data,
+      {
+        version                 => 1,
+        code_generation         => "machine_generated",
+        automated_contributions => "code_request",
+        automated_actions       => "code_request",
+        models                  => [qw( 5pt-5.1-codex )],
+      },
+      "data";
+
+    ok my $copy = Dist::AutomationPolicy->from_json( json => $pol->data ), "from_json";
+
+    is $copy->data, $pol->data, "round trip";
+
+};
 
 done_testing;

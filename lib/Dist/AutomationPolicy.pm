@@ -10,7 +10,7 @@ use JSON::MaybeXS;
 use JSON::Schema::Validate v0.7.0;
 use Path::Tiny qw( path );
 use PerlX::Maybe qw( maybe );
-use Types::Common qw( Enum InstanceOf PositiveInt NonEmptyStr StrMatch );
+use Types::Common qw( ArrayRef Enum InstanceOf PositiveInt NonEmptyStr StrMatch );
 
 use experimental qw( postderef signatures );
 
@@ -38,6 +38,7 @@ To create an automation policy file:
         code_generation         => "toolchain",
         automated_contributions => "issue",
         automated_actions       => "code_request",
+        models                  => [ "claude-sonnet-4.6" ],
     );
 
     if ( $pol->validate ) {
@@ -289,6 +290,24 @@ has automated_actions => (
     required => 1,
 );
 
+=attr models
+
+This is an optional aaray reference of Model IDs used for L</automated_actions>, and where known L</automated_contributions>.
+
+Model IDs should know from L<https://docs.aimlapi.com/api-references/model-database>
+
+=cut
+
+has models => (
+    is     => 'ro',
+    isa    => ArrayRef [NonEmptyStr],
+    coerce => sub($val) {
+        return $val if ref($val) eq "ARRAY";
+        return [$val];
+    },
+    builder => sub($self) { return [] },
+);
+
 =attr filename
 
 This is the file path (relative to the project root) that the policy will be saved in.
@@ -325,6 +344,7 @@ sub data($self) {
         code_generation         => $self->code_generation,
         automated_contributions => $self->automated_contributions,
         automated_actions       => $self->automated_actions,
+        maybe models            => $self->models->[0] ? $self->models : undef,
     };
     #>>>
 }

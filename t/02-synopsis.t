@@ -19,6 +19,7 @@ subtest write => sub {
         code_generation         => "toolchain",
         automated_contributions => "issue",
         automated_actions       => "code_request",
+        models                  => [ "claude-sonnet-4.6" ],
       ),
       "new";
 
